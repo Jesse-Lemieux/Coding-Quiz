@@ -1,3 +1,8 @@
+var bodyEl = document.querySelector('#body')
+var headerEl = document.querySelector('#header');
+var timerContainer = document.querySelector('#timerparent');
+var mainEl = document.querySelector('#main');
+
 //Timer functionality
 var timeLeft = 60;
     var elem = document.getElementById('timer');
@@ -13,5 +18,13 @@ var timeLeft = 60;
         timeLeft--;
       }
     }
-countdown();
+
+var quizStart = document.createElement('button');
+    quizStart.textContent = 'START';
+    quizStart.className = 'quizstart';
+    mainEl.appendChild(quizStart);
+    quizStart.addEventListener('click');{
+        countdown();
+    }
+
 
