@@ -1,4 +1,4 @@
-
+//Timer functionality
 var timeLeft = 60;
     var elem = document.getElementById('timer');
     
