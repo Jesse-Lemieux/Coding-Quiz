@@ -33,8 +33,8 @@ function quizTimer() {
   }
 
   else {
-    clearInterval(timerInterval);
-    resetQuiz();
+    alert("Times up! Try again.")
+    location.reload();
   }
 
 
