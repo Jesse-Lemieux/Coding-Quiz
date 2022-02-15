@@ -18,5 +18,10 @@
       It's a webpage, just load it up in your default browser and you're good to go!
       
   ## Usage
+  You're greeted with this landing page. It's a simple layout, start button, title and a little link to the high scores.
+  [landing page](assets/screenshots/Screenshot (6).png)
   Once you hit the start button try to answer the questions as fast as you can, your score will reflect that becasue the scoring here
   is based on time remaining! Be careful, however, every wrong answer you get will subtract 15 seconds from the timer!
+  [quiz](assets/screenshots/Screenshot (7).png)
+  Once you have finished, you will prompted for you name, after which your name and score will automatically be saved and displayed here on the high score page! pretty cool huh?
+  [high scores](assets/screenshots/Screenshot (8).png)
