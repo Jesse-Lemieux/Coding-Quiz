@@ -22,11 +22,76 @@ function quizTimer(){setInterval(() => {
 }, 1000);
 }
 
-var question1 = 'What symbols are used to wrap an array?';
-var question2 = 'How can you covert an object into a string?';
-var question3 = 'What can access a globally declared variable?';
-var question4 = 'setInterval uses milliseconds to make its intervals. How long is 5500 milliseconds?';
-var question5 = 'Out of these options, which is an eventListener?';
+
+//Quiz questions
+var questions = [{
+  numb: 1,
+  question:'What symbols are used to wrap an array?',
+  answer: '[]',
+  options: [
+    '""',
+    '{}',
+    '[]',
+    '()'
+  ]
+},
+  {
+  numb: 2,
+  question: 'How can you covert an object into a string?',
+  answer: 'JSON.stringify',
+  options: [
+    'JSON.stringify',
+    'addEventListener.makeString',
+    '::convert::',
+    '#becomestring'
+  ]
+},
+
+{
+  numb: 3,
+  question: 'What can access a globally declared variable?',
+  answer: 'all of the above',
+  options: [
+    'for loops',
+    'functions',
+    'objects',
+    'all of the above'
+  ]
+},
+
+{
+  numb: 4,
+  question: 'setInterval uses milliseconds to make its intervals. How long is 5500 milliseconds?',
+  answer: '5 and a half seconds',
+  options: [
+    '55 seconds',
+    '5 and a half minutes',
+    '5 and a half seconds',
+    '5500 seconds'
+  ]
+},
+
+{
+  numb: 5,
+  question: 'Out of these options, which is an eventListener?',
+  answer: 'click',
+  options: [
+    'html',
+    'concatenate',
+    'tweet',
+    'click'
+  ]
+},
+
+  ]
+
+
+//Quiz funtionality 
+function quizQuestions(){
+  
+
+
+}
 
 
 //Start button
