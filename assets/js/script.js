@@ -2,7 +2,8 @@
 var bodyEl = document.querySelector('#body')
 var headerEl = document.querySelector('#header');
 var timerContainer = document.querySelector('#timerparent');
-var mainEl = document.querySelector('#main');
+var containerEl = document.querySelector('#container');
+var startBtn = document.querySelector('#start-btn');
 
 //Timer element display
 var timeLeft = 75;
@@ -95,11 +96,7 @@ function quizQuestions(){
 
 
 //Start button
-var quizStart = document.createElement('button');
-    quizStart.textContent = 'START';
-    quizStart.className = 'quizstart';
-    mainEl.appendChild(quizStart);
-    quizStart.addEventListener('click', quizTimer);
+    startBtn.addEventListener('click', quizTimer);
 
 
   
