@@ -54,7 +54,7 @@ function setQuestion(){
   resetState();
   showQuestion(shuffeldQuestions[currentQuestionIndex])
 }
-
+ //Display question
 function showQuestion(question) {
   questionEl.innerText = question.question
   question.answers.forEach(answer => {
@@ -68,14 +68,14 @@ function showQuestion(question) {
     answerButtonsEl.appendChild(button)
   })
 }
-
+ //Reset buttons on new questions
 function resetState() {
   while(answerButtonsEl.firstChild){
     answerButtonsEl.removeChild
     (answerButtonsEl.firstChild)
   }
 } 
-
+ //Answer button functionality
 function selectAnswer(e) {
   var selectedButton = e.target
   var correct = selectedButton.dataset.correct
@@ -95,7 +95,7 @@ function selectAnswer(e) {
      location.reload()
    }
 }
-
+ //Reset after quiz is over
 function resetQuiz(){
   timerDisplay.classList.add('hide')
   questionContainerEl.classList.add('hide')
