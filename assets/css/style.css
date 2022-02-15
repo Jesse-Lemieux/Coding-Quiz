@@ -7,11 +7,18 @@ body {
     padding: 0;
     margin: 0;
     display: flex;
+    flex-direction: column;
     width: 100vw;
     height: 100vh;
     justify-content: center;
     align-items: center;
     background-color: #4895ef;
+}
+
+#timerparent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .container {
@@ -35,7 +42,7 @@ body {
     border: 1px, solid, #4895ef;
     border-radius: 5px;
     padding: 5px 10px;
-    color: white;
+    color: black;
     outline: none;
 }
 
@@ -61,7 +68,6 @@ body {
 
 .timerdisplay{
     width: 800px;
-    max-width: 80%;
     background-color: white;
     border-radius: 5px;
     padding: 10px;

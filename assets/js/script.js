@@ -1,13 +1,19 @@
 //Main elements and Global variables
-var bodyEl = document.querySelector('#body')
+var bodyEl = document.querySelector('#body');
 var headerEl = document.querySelector('#header');
 var timerContainer = document.querySelector('#timerparent');
 var containerEl = document.querySelector('#container');
 var startBtn = document.querySelector('#start-btn');
 var questionContainerEl = document.querySelector('#question-container');
-const shuffeldQuestions, currentQuestionIndex
-var questionEl = document.querySelector('#question');
-var answerButtonsEl = document.querySelector('#answer-buttons')
+let shuffeldQuestions, currentQuestionIndex;
+var questionEl = document.querySelector('#quest');
+var answerButtonsEl = document.querySelector('#answer-buttons');
+
+//Start button
+startBtn.addEventListener('click', () => {
+  quizTimer();
+  startQuiz();
+});
 
 //Timer element display
 var timeLeft = 75;
@@ -25,66 +31,15 @@ function quizTimer(){setInterval(() => {
     timeLeft=timeLeft-1;
     timerDisplay.innerHTML = timeLeft + " seconds remaining"
   } 
-  else (clearInterval)
+  else ()=>{
+    clearInterval();
+    timerDisplay.className = 'hide'
+    questionContainerEl.className = 'hide'
+    scoreLog();
+
+  }
 }, 1000);
 }
-
-//Quiz questions
-var questions = [{
-  question:'What symbols are used to wrap an array?',
-  answers: [
-    { text: '""', correct: false },
-    { text: '[]', correct: true },
-    { text: '()', correct: false },
-    { text: '{}', correct: false },
-
-  ]
-},
-  {
-  question: 'How can you covert an object into a string?',
-  answers: [
-    { text: 'JSON.stringify', correct: true },
-    { text: 'addEventListener.makeString', correct: false },
-    { text: '::convert::', correct: false },
-    { text: '#becomestring', correct: false },
-  ]
-
-},
-
-{
-  question: 'What can access a globally declared variable?',
-  answer: 'all of the above',
-  options: [
-    'for loops',
-    'functions',
-    'objects',
-    'all of the above'
-  ]
-},
-
-{
-  question: 'setInterval uses milliseconds to make its intervals. How long is 5500 milliseconds?',
-  answer: '5 and a half seconds',
-  options: [
-    '55 seconds',
-    '5 and a half minutes',
-    '5 and a half seconds',
-    '5500 seconds'
-  ]
-},
-
-{
-  question: 'Out of these options, which is an eventListener?',
-  answer: 'click',
-  options: [
-    'html',
-    'concatenate',
-    'tweet',
-    'click'
-  ]
-},
-
-  ]
 
   //Quiz Functionality
 function startQuiz(){
@@ -97,18 +52,78 @@ function startQuiz(){
 
 function setQuestion(){
   showQuestion(shuffeldQuestions[currentQuestionIndex])
-
 }
 
-function showQuestion(question){
-  questionEl.innertext = question.question;
+function showQuestion(question) {
+  questionEl.innerText = question.question
+  question.answers.forEach(answer => {
+    var button = document.createElement('button')
+    button.innerText = answer.text
+    button.classList.add('btn')
+    if (answer.correct) {
+      button.dataset.correct = answer.correct
+    }
+    button.addEventListener('click', selectAnswer)
+    answerButtonsEl.appendChild(button)
+  })
 }
 
-//Start button
-    startBtn.addEventListener('click', () => {
-      quizTimer();
-      startQuiz();
-    });
+
+
+    
+//Quiz questions
+const questions = [
+  {
+  question:'What symbols are used to wrap an array?',
+  answers: [
+    { text: '""', correct: false },
+    { text: '[]', correct: true },
+    { text: '()', correct: false },
+    { text: '{}', correct: false }
+  ]
+},
+{
+  question: 'How can you covert an object into a string?',
+  answers: [
+    { text: 'JSON.stringify', correct: true },
+    { text: 'addEventListener.makeString', correct: false },
+    { text: '::convert::', correct: false },
+    { text: '#becomestring', correct: false }
+  ]
+  },
+  
+  {
+  question: 'What can access a globally declared variable?',
+  answers: [
+    { text: 'for loops', correct: false },
+    { text: 'functions', correct: false },
+    { text: 'objects', correct: false },
+    { text: 'all of the above', correct: true }
+  ]
+  },
+  
+  {
+  question: 'setInterval uses milliseconds to make its intervals. How long is 5500 milliseconds?',
+  answers: [
+    { text: '55 seconds', correct: false },
+    { text: '5 and a half minutes', correct: false },
+    { text: '5 and a half seconds', correct: true },
+    { text: '5500 seconds', correct: false }
+  ]
+  },
+  
+  {
+  question: 'Out of these options, which is an eventListener?',
+  answers: [
+    { text: 'html', correct: false },
+    { text: 'concatenate', correct: false },
+    { text: 'tweet', correct: false },
+    { text: 'click', correct: true }
+  ]
+  },
+  
+  ]
+
 
 
   
