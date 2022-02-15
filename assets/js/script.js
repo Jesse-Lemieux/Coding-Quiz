@@ -22,6 +22,12 @@ function quizTimer(){setInterval(() => {
 }, 1000);
 }
 
+var question1 = 'What symbols are used to wrap an array?';
+var question2 = 'How can you covert an object into a string?';
+var question3 = 'What can access a globally declared variable?';
+var question4 = 'setInterval uses milliseconds to make its intervals. How long is 5500 milliseconds?';
+var question5 = 'Out of these options, which is an eventListener?';
+
 
 //Start button
 var quizStart = document.createElement('button');
@@ -29,6 +35,8 @@ var quizStart = document.createElement('button');
     quizStart.className = 'quizstart';
     mainEl.appendChild(quizStart);
     quizStart.addEventListener('click', quizTimer);
+
+
   
 
 
