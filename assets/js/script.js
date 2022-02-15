@@ -8,7 +8,6 @@ var questionContainerEl = document.querySelector('#question-container');
 let shuffeldQuestions, currentQuestionIndex;
 var questionEl = document.querySelector('#quest');
 var answerButtonsEl = document.querySelector('#answer-buttons');
-
 //Start button
 startBtn.addEventListener('click', () => {
   quizTimer();
@@ -23,26 +22,27 @@ var timerDisplay = document.createElement('h2');
     timerDisplay.className = 'hide';
     timerContainer.appendChild(timerDisplay);
 //Timer functionality
-function quizTimer(){setInterval(() => {
+const timerInterval = setInterval(quizTimer, 1000);
+function quizTimer() {
 
-  timerDisplay.classList.add('timerdisplay');
-
-  if (timeLeft > 0){
+  
+  
+  if(timeLeft > 0){
     timeLeft=timeLeft-1;
     timerDisplay.innerHTML = timeLeft + " seconds remaining"
-  } 
-  else ()=>{
-    clearInterval();
-    timerDisplay.className = 'hide'
-    questionContainerEl.className = 'hide'
-    scoreLog();
-
   }
-}, 1000);
+
+  else {
+    clearInterval(timerInterval);
+    resetQuiz();
+  }
+
+
 }
 
   //Quiz Functionality
 function startQuiz(){
+  timerDisplay.classList.add('timerdisplay');
   startBtn.classList.add('hide');
   shuffeldQuestions = questions.sort(() => Math.random() - .5)
   currentQuestionIndex = 0
@@ -51,6 +51,7 @@ function startQuiz(){
 }
 
 function setQuestion(){
+  resetState();
   showQuestion(shuffeldQuestions[currentQuestionIndex])
 }
 
@@ -68,7 +69,40 @@ function showQuestion(question) {
   })
 }
 
+function resetState() {
+  while(answerButtonsEl.firstChild){
+    answerButtonsEl.removeChild
+    (answerButtonsEl.firstChild)
+  }
+} 
 
+function selectAnswer(e) {
+  var selectedButton = e.target
+  var correct = selectedButton.dataset.correct
+  if (selectedButton = correct && shuffeldQuestions.length > currentQuestionIndex + 1 ){
+    currentQuestionIndex++
+    setQuestion()
+    }
+  
+  else if (selectedButton == correct){
+    timeLeft = timeLeft - 15
+   }
+   else {
+     score = timeLeft
+     username = prompt("What's your name?")
+     alert('Your score was ' + score)
+     localStorage.setItem(username, score)
+     location.reload()
+   }
+}
+
+function resetQuiz(){
+  timerDisplay.classList.add('hide')
+  questionContainerEl.classList.add('hide')
+  startBtn.classList.remove('hide')
+  timeLeft = 75
+  setInterval(timerInterval)
+}
 
     
 //Quiz questions
@@ -76,10 +110,10 @@ const questions = [
   {
   question:'What symbols are used to wrap an array?',
   answers: [
-    { text: '""', correct: false },
-    { text: '[]', correct: true },
-    { text: '()', correct: false },
-    { text: '{}', correct: false }
+    { text: '"   "', correct: false },
+    { text: '[   ]', correct: true },
+    { text: '(   )', correct: false },
+    { text: '{   }', correct: false }
   ]
 },
 {
