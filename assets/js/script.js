@@ -4,16 +4,22 @@ var headerEl = document.querySelector('#header');
 var timerContainer = document.querySelector('#timerparent');
 var containerEl = document.querySelector('#container');
 var startBtn = document.querySelector('#start-btn');
+var questionContainerEl = document.querySelector('#question-container');
+const shuffeldQuestions, currentQuestionIndex
+var questionEl = document.querySelector('#question');
+var answerButtonsEl = document.querySelector('#answer-buttons')
 
 //Timer element display
 var timeLeft = 75;
 
 var timerDisplay = document.createElement('h2');
     timerDisplay.textContent = timeLeft + ' seconds remaining';
-    timerDisplay.className = 'timerdisplay';
+    timerDisplay.className = 'hide';
     timerContainer.appendChild(timerDisplay);
 //Timer functionality
 function quizTimer(){setInterval(() => {
+
+  timerDisplay.classList.add('timerdisplay');
 
   if (timeLeft > 0){
     timeLeft=timeLeft-1;
@@ -23,33 +29,29 @@ function quizTimer(){setInterval(() => {
 }, 1000);
 }
 
-
 //Quiz questions
 var questions = [{
-  numb: 1,
   question:'What symbols are used to wrap an array?',
-  answer: '[]',
-  options: [
-    '""',
-    '{}',
-    '[]',
-    '()'
+  answers: [
+    { text: '""', correct: false },
+    { text: '[]', correct: true },
+    { text: '()', correct: false },
+    { text: '{}', correct: false },
+
   ]
 },
   {
-  numb: 2,
   question: 'How can you covert an object into a string?',
-  answer: 'JSON.stringify',
-  options: [
-    'JSON.stringify',
-    'addEventListener.makeString',
-    '::convert::',
-    '#becomestring'
+  answers: [
+    { text: 'JSON.stringify', correct: true },
+    { text: 'addEventListener.makeString', correct: false },
+    { text: '::convert::', correct: false },
+    { text: '#becomestring', correct: false },
   ]
+
 },
 
 {
-  numb: 3,
   question: 'What can access a globally declared variable?',
   answer: 'all of the above',
   options: [
@@ -61,7 +63,6 @@ var questions = [{
 },
 
 {
-  numb: 4,
   question: 'setInterval uses milliseconds to make its intervals. How long is 5500 milliseconds?',
   answer: '5 and a half seconds',
   options: [
@@ -73,7 +74,6 @@ var questions = [{
 },
 
 {
-  numb: 5,
   question: 'Out of these options, which is an eventListener?',
   answer: 'click',
   options: [
@@ -86,17 +86,29 @@ var questions = [{
 
   ]
 
+  //Quiz Functionality
+function startQuiz(){
+  startBtn.classList.add('hide');
+  shuffeldQuestions = questions.sort(() => Math.random() - .5)
+  currentQuestionIndex = 0
+  questionContainerEl.classList.remove('hide');
+  setQuestion();
+}
 
-//Quiz funtionality 
-function quizQuestions(){
-  
-
+function setQuestion(){
+  showQuestion(shuffeldQuestions[currentQuestionIndex])
 
 }
 
+function showQuestion(question){
+  questionEl.innertext = question.question;
+}
 
 //Start button
-    startBtn.addEventListener('click', quizTimer);
+    startBtn.addEventListener('click', () => {
+      quizTimer();
+      startQuiz();
+    });
 
 
   
